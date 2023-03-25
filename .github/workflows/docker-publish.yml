@@ -1,5 +1,8 @@
 name: Docker
 
+env:
+  ACTIVEMQ_VERSION: 5.18.0
+
 on:
   push:
     branches:
@@ -19,9 +22,9 @@ jobs:
       - name: Build and push the images
         run: |
           tmpName="image-$RANDOM"
-          docker build --tag $tmpName --build-arg ACTIVEMQ_VERSION=${{ secrets.ACTIVEMQ_VERSION }} .
+          docker build --tag $tmpName --build-arg ACTIVEMQ_VERSION=${{ env.ACTIVEMQ_VERSION }} .
           IMAGE_ID=${{ secrets.DOCKER_REGISTRY_URL }}/${{ secrets.IMAGE_NAME }}
-          docker tag $tmpName $IMAGE_ID:${{ secrets.ACTIVEMQ_VERSION }}
-          docker push $IMAGE_ID:${{ secrets.ACTIVEMQ_VERSION }}
+          docker tag $tmpName $IMAGE_ID:${{ env.ACTIVEMQ_VERSION }}
+          docker push $IMAGE_ID:${{ env.ACTIVEMQ_VERSION }}
           docker tag $tmpName $IMAGE_ID:latest
           docker push $IMAGE_ID:latest
