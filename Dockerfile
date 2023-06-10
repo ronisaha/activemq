@@ -1,8 +1,8 @@
-FROM openjdk:8-jdk-alpine
+FROM openjdk:17-alpine
 
 LABEL org.opencontainers.image.authors="Roni Kumar Saha <roni.csed@gmail.com>"
 
-ARG ACTIVEMQ_VERSION=5.16.3
+ARG ACTIVEMQ_VERSION=5.18.0
 
 ENV ACTIVEMQ_DATA /data
 
