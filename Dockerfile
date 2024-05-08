@@ -1,8 +1,8 @@
-FROM openjdk:17-alpine
+FROM amazoncorretto:21-al2023-headless
 
 LABEL org.opencontainers.image.authors="Roni Kumar Saha <roni.csed@gmail.com>"
 
-ARG ACTIVEMQ_VERSION=5.18.0
+ARG ACTIVEMQ_VERSION=6.1.2
 
 ENV ACTIVEMQ_DATA /data
 

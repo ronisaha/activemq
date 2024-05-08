@@ -1,7 +1,7 @@
 name: Docker
 
 env:
-  ACTIVEMQ_VERSION: 5.18.0
+  ACTIVEMQ_VERSION: 6.1.2
 
 on:
   push:
