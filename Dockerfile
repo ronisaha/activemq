@@ -6,10 +6,11 @@ ARG ACTIVEMQ_VERSION=6.1.2
 
 ENV ACTIVEMQ_DATA /data
 
-RUN cd /opt/ ; \
-    wget -O download.tar.gz "https://www.apache.org/dyn/closer.cgi?filename=/activemq/${ACTIVEMQ_VERSION}/apache-activemq-${ACTIVEMQ_VERSION}-bin.tar.gz&action=download" ; \
-    tar zxvf *.tar.gz ; ls ; \
-    rm download.tar.gz
+WORKDIR /opt
+
+RUN curl "https://www.apache.org/dyn/closer.cgi?filename=/activemq/${ACTIVEMQ_VERSION}/apache-activemq-${ACTIVEMQ_VERSION}-bin.tar.gz&action=download" -o download.tar.gz && \
+    tar zxvf download.tar.gz && ls && \
+    && download.tar.gz
 
 WORKDIR /opt/apache-activemq-${ACTIVEMQ_VERSION}/bin
 
